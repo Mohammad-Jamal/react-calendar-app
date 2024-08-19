@@ -32,7 +32,7 @@ This is a fully functional, responsive calendar application built with React. It
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/react-calendar-app.git
+   git clone https://github.com/Mohammad-Jamal/react-calendar-app.git
    cd react-calendar-app
    ```
 ## Installation
