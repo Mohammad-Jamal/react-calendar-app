@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import { EventContext } from "../context/EventContext";
 import styles from '../modules/Calendar.module.css'
 
@@ -65,4 +65,4 @@ const EventAccordion = () => {
   );
 };
 
-export default EventAccordion;
+export default memo(EventAccordion);

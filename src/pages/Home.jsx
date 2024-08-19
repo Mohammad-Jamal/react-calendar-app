@@ -4,6 +4,7 @@ import EventAccordion from "../components/EventAccordian";
 import Calendar from "../components/Calendar";
 
 const Home = () => {
+
   return (
     <>
       <div className={styles.container}>

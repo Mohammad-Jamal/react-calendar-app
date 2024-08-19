@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { EventContext } from "../context/EventContext";
 import { Link } from "react-router-dom";
+import SearchInput from "../components/SearchInput";
+import EventItems from "../components/EventItems";
 
 const EventDetails = () => {
-  const { events, deleteEvent, deleteAllEvent } = useContext(EventContext);
+  const { events,deleteAllEvent } = useContext(EventContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -38,13 +40,8 @@ const EventDetails = () => {
         Event Details
       </h1>
       {/* search input */}
-      <input
-        type="text"
-        placeholder="Search Events.."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full sm:w-2/3 lg:w-1/2 px-4 py-2 sm:py-4 mb-4 text-lg sm:text-2xl text-gray-700 placeholder-gray-400 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-lg sm:placeholder:text-2xl shadow-sm transition-all duration-200"
-      />
+
+      <SearchInput searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
       {/* filter dropdown */}
       <select
         value={selectedCategory}
@@ -77,26 +74,7 @@ const EventDetails = () => {
           </thead>
           <tbody className="text-lg sm:text-2xl">
             {filteredEvents.map((event, index) => (
-              <tr
-                key={index}
-                className={`text-center ${
-                  index % 2 === 0 ? "bg-[#12192c]" : "bg-[#002147]"
-                }`}
-              >
-                <td className="p-4 sm:p-6 text-white">{index + 1}</td>
-                <td className="p-4 sm:p-6 text-white">{event.title}</td>
-                <td className="p-4 sm:p-6 text-white">{event.category}</td>
-                <td className="p-4 sm:p-6 text-white">{event.date}</td>
-                <td className="p-4 sm:p-6 text-white">{event.details}</td>
-                <td className="p-4 sm:p-6 text-white">
-                  <button
-                    onClick={() => deleteEvent(index)}
-                    className="bg-black border border-red-500 text-red-500 px-4 sm:px-8 py-2 sm:py-3 rounded-xl transition-all ease-linear hover:bg-red-600 hover:text-white hover:border-white"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
+              <EventItems key={index} index = {index} event = {event} />
             ))}
           </tbody>
         </table>

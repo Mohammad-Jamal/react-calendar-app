@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import styles from "../modules/Calendar.module.css";
 import { EventContext } from "../context/EventContext";
 
@@ -11,6 +11,8 @@ const Calendar = () => {
     category: "",
     details: "",
   });
+
+
 
   const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [changed, setChanged] = useState(false);
@@ -271,6 +273,6 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default memo(Calendar);
 
 
